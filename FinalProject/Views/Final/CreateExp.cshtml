@@ -1,0 +1,50 @@
+﻿@model FinalProject.Models.PExperience
+
+@{
+    ViewData["Title"] = "CreateExp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Experience</h1>
+
+<hr />
+<div class="row" style="padding-top: 1em;">
+    <div class="col-md-4">
+        <form asp-action="CreateExp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="company" class="control-label" style="padding-right: 1em; width: 80px; display: inline-block; padding-bottom: 1em;">Company</label>
+                <input asp-for="company" class="form-control" style="padding-left: 1em; width: 500px;" />
+                <span asp-validation-for="company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label" style="padding-right: 1em; width: 80px; display: inline-block; padding-bottom: 1em;">Title</label>
+                <input asp-for="title" class="form-control" style="padding-left: 1em; width: 500px;" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="year" class="control-label" style="padding-right: 1em; width: 80px; display: inline-block; padding-bottom: 1em;">Year</label>
+                <input asp-for="year" class="form-control" style="padding-left: 1em; width: 500px;" />
+                <span asp-validation-for="year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="description" class="control-label" style="padding-right: 1em; width: 80px; display: inline-block; padding-bottom: 1em;">Description</label>
+                <input asp-for="description" class="form-control" style="padding-left: 1em; width: 500px;" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="technologies" class="control-label" style="padding-right: 1em; width: 80px; display: inline-block; padding-bottom: 1em;">Technologies</label>
+                <input asp-for="technologies" class="form-control" style="padding-left: 1em; width: 500px;" />
+                <span asp-validation-for="technologies" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="padding-top: 2em;">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="padding-top: 1em;">
+    <a asp-action="pexperience">Back to List</a>
+</div>
+

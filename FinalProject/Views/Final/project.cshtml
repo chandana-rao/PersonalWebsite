@@ -1,0 +1,89 @@
+﻿@model IEnumerable<FinalProject.Models.Project>
+
+@{
+    ViewData["Title"] = "project";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="font-family: Tahoma;">Projects</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="CreateProject">Create New</a>
+    </p>
+}
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+    <table style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">
+        <tr>
+            <th align="left">
+                Name
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+        </tr>
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Year
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+        </tr>
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Description
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+        </tr>
+
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Technologies
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.technologies)
+            </td>
+        </tr>
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Project type
+            </th>
+                @if (item.projectType == Models.TypeProject.Personal)
+                {
+                    <td style="padding-left: 1.5em;">
+                        @Html.DisplayFor(modelItem => item.projectType)
+                    </td>
+                }
+                else
+                {
+                    <td style="padding-left: 1.5em;">
+                        @Html.DisplayFor(modelItem => item.projectType) ,
+                        @Html.DisplayFor(modelItem => item.degreeType)
+                    </td>  
+                }
+        </tr>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <tr style="font-size: 0.8em;">
+                <td>
+                    <a asp-action="EditProject" asp-route-id="@item.PId">Edit</a> |
+                    <a asp-action="DeleteProject" asp-route-id="@item.PId">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </table>
+    }
+</table>
+
+<div>
+    <a asp-action="Index">Home</a>
+</div>

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="name" align="center">
+    <p>&lt;Chandana Rao &#47;&gt;</p>
+<div class="blocks" align="center">
+    <button class="blockItem" onclick="location.href='@Url.Action("education", "Final")'">Education</button>
+    <button class="blockItem" onclick="location.href='@Url.Action("project", "Final")'">Projects</button>
+    <button class="blockItem" onclick="location.href='@Url.Action("pexperience", "Final")'">Professional Experience</button>
+    <button class="blockItem" type="submit" onclick="location.href='@Url.Action("files", "Final")'">Documents</button>
+    </div>
+
+
+    @*<form asp-controller="FinalAPI" asp-action="Download" method="get"
+          enctype="multipart/form-data">
+        <button class="blockItem" type="submit">Resume</button>
+    </form>
+    @if (User.IsInRole("Admin"))
+    {
+        <form asp-controller="FinalAPI" asp-action="UploadFile" method="post"
+              enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <button type="submit">Upload File</button>
+        </form>
+
+        <form asp-controller="FinalAPI" asp-action="DeleteFile"
+              enctype="multipart/form-data">
+            <button type="submit">Delete File</button>
+        </form>
+    }*@
+</div>
+

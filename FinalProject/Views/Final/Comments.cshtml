@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FinalProject.Models.Recruiter>
+
+@{
+    ViewData["Title"] = "Comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Comments</h1>
+
+@if (User.IsInRole("User"))
+{
+    var item = Model.ToList();
+    var recruiter = item[0];
+    @if (recruiter.comments == null)
+    {
+        <p>
+            <a asp-action="AddComment" asp-route-id="@recruiter.userId">Create New</a>
+        </p>
+    }
+
+    else
+    {
+        <table class="table" style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => recruiter.comments)
+                </td>
+            </tr>
+            <tr style="font-size: 0.8em;">
+                <td>
+                    <a asp-action="EditComment" asp-route-id="@recruiter.userId">Edit</a> |
+                    <a asp-action="DeleteComments" asp-route-id="@recruiter.userId">Delete</a>
+                </td>
+                </tr>
+        </table>
+    }
+}
+
+else if (User.IsInRole("Admin"))
+{
+        <table class="table" style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">
+            @foreach (var item in Model)
+            {
+
+                @if (item.comments != null)
+                {
+                    <table style="padding: 0.8em; font-family: Tahoma; font-size: 1.2em;">
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.comments)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 1.5em; text-decoration: none; color: black;">
+                                - @Html.DisplayFor(modelItem => item.email)
+                            </td>
+                        </tr>
+                    </table>
+                 }
+             }
+            </table>
+}
+
+            <div>
+                <a asp-action="Index">Home</a>
+            </div>

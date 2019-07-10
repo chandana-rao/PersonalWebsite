@@ -1,0 +1,81 @@
+﻿@model IEnumerable<FinalProject.Models.Education>
+
+@{
+    ViewData["Title"] = "education";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="font-family: Tahoma">Academics</h1>
+
+@if (User.IsInRole("Admin"))
+ {
+    <p>
+        <a asp-action="CreateAcad">Create New</a>
+    </p>
+ }
+
+<table class="table" style="padding-top:1em">
+    @foreach (var item in Model)
+    {
+        <table style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">
+
+            <tr>
+                <th align="left" style="padding: 0.2em;">
+                    University
+                </th>
+                <td style="padding-left: 1em;">
+                    @Html.DisplayFor(modelItem => item.university)
+                </td>
+            </tr>
+            <tr>
+                <th align="left" style="padding: 0.2em;">
+                    Degree
+                </th>
+                <td style="padding-left: 1em;">
+                    @Html.DisplayFor(modelItem => item.degreeType)
+                </td>
+            </tr>
+            <tr>
+                <th align="left" style="padding: 0.2em;">
+                    Major
+                </th>
+                <td style="padding-left: 1em;">
+                    @Html.DisplayFor(modelItem => item.major)
+                </td>
+            </tr>
+
+            <tr>
+                <th align="left" style="padding: 0.2em;">
+                    Year
+                </th>
+                <td style="padding-left: 1em;">
+                    @Html.DisplayFor(modelItem => item.year)
+                </td>
+            </tr>
+
+            <tr>
+                <th align="left" style="padding: 0.2em;">
+                    Coursework
+                </th>
+                <td style="padding-left: 1em;">
+                    @Html.DisplayFor(modelItem => item.coursework)
+                </td>
+            </tr>
+
+            <tr style="font-size: 0.8em; padding-top:1em;">
+                <td>
+                    @if (User.IsInRole("Admin"))
+                        {
+                        <a asp-action="EditAcad" asp-route-id="@item.EId" style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">Edit  </a>
+                        <a asp-action="DeleteAcad" asp-route-id="@item.EId" style="padding: 1em; font-family: Tahoma; font-size: 1.2em;"> Delete  </a>
+                        }
+                        <a asp-action="TypeProjects" asp-route-id="@item.EId" style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">Projects</a>
+                </td>
+            </tr>
+        </table>
+    }
+</table>
+
+    <div>
+        <a asp-action="Index">Home</a>
+    </div>

@@ -1,0 +1,77 @@
+﻿body {
+    padding: 40px 40px 70px 40px;
+    margin: 0px;
+    font-family: Tahoma, sans-serif;
+    font-size: medium;
+}
+
+.myimg {
+    padding: 10px;
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    /*right: 10%;*/
+    padding-left: 2em;
+}
+
+.name {
+    font-size: 5em;
+    color: #385a7c;
+}
+
+.footer {
+    position: relative;
+    top: 60%;
+    left: 5%;
+    padding-top: 1em;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.blocks {
+    position: relative;
+    text-align: center;
+    padding-bottom: 2em;
+    display: block;
+    left: 10%;
+}
+
+    .blocks .blockItem {
+        border: none;
+        color: black;
+        text-decoration: none;
+        font-size: 26px;
+        width: 250px;
+        background-color: lightskyblue;
+        height: 100px;
+        float: left;
+        opacity: 0.8;
+    }
+
+.blocks .blockItem:hover {
+    opacity: 1;
+}
+
+h2 {
+    position: relative;
+    left: 5%;
+}
+
+.description {
+    position: relative;
+    left: 5%;
+    padding: 1em;
+}
+
+.uploadButton {
+    background: none !important;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+}

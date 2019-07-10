@@ -1,0 +1,45 @@
+﻿@model FinalProject.Models.Files
+
+@{
+    ViewData["Title"] = "AddFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add File</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if (User.IsInRole("Admin"))
+        {
+            <form asp-controller="FinalAPI" asp-action="UploadFile" method="post"
+                  enctype="multipart/form-data" class="containerform">
+                <div>
+                    @*<div class="containerform-groupclass">
+                        File name
+                        <input name="FileName" class="form-control" />
+                        <div></div>
+                    </div>*@
+                    <div class="containerform-groupclass" style="padding-right: 1em;">
+                        Description
+                        <input name="FileDescription" class="form-control" style=" padding-bottom: 1em; width: 800px;" />
+                        <div></div>
+                    </div>
+                    <div class="containerform-groupclass" style="padding-top: 1em;">
+                        Browse File
+                        <input name="myFile" type="file" style="padding-left: 1em; width: 500px;" />
+                        <div></div>
+                    </div>
+                </div>
+                <div class="containerform-groupclass" style="padding-left: 1em; padding-top: 1em;">
+                    <input type="submit" value="Upload"  />
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+<div  style="padding-top: 1em;">
+    <a asp-action="files">Back</a>
+</div>
+

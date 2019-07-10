@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/Final.css">
+    <link rel="stylesheet" href="~/css/template.css">
+    @*<script src="~/js/init.js"></script>*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <menubar>
+        <div class='menu'>
+            <a asp-action="Index" asp-controller="Final">Home</a>
+        </div>
+        <div class='menu'>
+            <a href="~/about.html">About</a>
+        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class='logmenu'>
+                <a> Hello @User.Identity.Name</a>
+            </div>
+            <div class='logmenu'>
+                <a href='~/Identity/Account/Logout'>Logout</a>
+            </div>
+            <div class='logmenu'>
+                <a asp-action="Comments" asp-controller="Final" asp-route-name="@User.Identity.Name"> Comments</a>
+                @*<a>Comments</a>*@
+            </div>
+        }
+        else
+        {
+            <div class='logmenu'>
+                <a href='~/Identity/Account/Login'>Login</a>
+            </div>
+            <div class='logmenu'>
+                <a href='~/Identity/Account/Register'>Register</a>
+            </div>
+        }
+        <div style='clear:all;'></div>
+    </menubar>
+
+    @RenderBody()
+
+    <foot>
+        <p>Chandana Rao 2019</p>
+    </foot>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

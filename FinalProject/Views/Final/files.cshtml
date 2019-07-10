@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FinalProject.Models.Files>
+
+@{
+    ViewData["Title"] = "files";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Files</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="AddFile">Add New File</a>
+    </p>
+}
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <table style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">
+            <tr>
+                <th align="left">
+                    File Name
+                </th>
+                <td style="padding-left: 1.5em;">
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+            </tr>
+            <tr>
+                <th align="left">
+                    Description
+                </th>
+                <td style="padding-left: 1.5em;">
+                    @Html.DisplayFor(modelItem => item.FileDescription)
+                </td>
+            </tr>
+                <tr style="font-size: 0.8em;">
+                    <td>
+                        <a style="color: black" asp-action="Download" asp-controller="FinalAPI" asp-route-id="@item.fileId" asp-route-check="1">Download File</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <form asp-controller="FinalAPI" asp-action="DeleteFile" asp-route-id="@item.fileId"
+                                  enctype="multipart/form-data" method="post">
+                                <button class="uploadButton" type="submit">Delete File</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+        </table>
+     }
+</table>
+
+<div style="padding-top: 1em;">
+    <a asp-action="Index">Back</a>
+</div>

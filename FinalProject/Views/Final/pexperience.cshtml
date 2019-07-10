@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FinalProject.Models.PExperience>
+
+@{
+    ViewData["Title"] = "pexperience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="font-family: Tahoma;">Professional experience</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="CreateExp">Create New</a>
+    </p>
+}
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+    <table style="padding: 1em; font-family: Tahoma; font-size: 1.2em;">
+        <tr>
+            <th align="left">
+                Company
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.company)
+            </td>
+        </tr>
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Title
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+        </tr>
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Job Description
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+        </tr>
+
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Year
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+        </tr>
+
+        <tr>
+            <th align="left" style="padding: 0.2em;">
+                Technologies
+            </th>
+            <td style="padding-left: 1.5em;">
+                @Html.DisplayFor(modelItem => item.technologies)
+            </td>
+        </tr>
+        @if (User.IsInRole("Admin"))
+        {
+            <tr style="font-size: 0.8em;">
+                <td>
+                    <a asp-action="EditExp" asp-route-id="@item.PEId">Edit</a> |
+                    <a asp-action="DeleteExp" asp-route-id="@item.PEId">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    }
+</table>
+
+<div>
+    <a asp-action="Index">Home</a>
+</div>
