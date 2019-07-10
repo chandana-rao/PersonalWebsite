@@ -5,3 +5,7 @@ Built web APIs to upload/download/delete the files from the admin side.
 
 
 ![alt Home](Screenshots/Home.PNG)
+![alt Home](Screenshots/About.PNG)
+![alt Home](Screenshots/Acad.PNG)
+![alt Home](Screenshots/PE.PNG)
+![alt Home](Screenshots/Projects.PNG)
